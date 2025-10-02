@@ -1,0 +1,4 @@
+qiskit==2.1.1
+qiskit_aer_gpu_cu11==0.17.0
+qiskit_ibm_runtime==0.40.1
+mthree==3.0.0

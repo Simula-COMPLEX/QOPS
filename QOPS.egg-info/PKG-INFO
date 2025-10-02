@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: QOPS
+Version: 0.1.0
+Summary: Quantum Program Testing Throught Commuting Pauli Strings
+Author-email: Asmar <asmar@simula.com>
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+Requires-Dist: qiskit==2.1.1
+Requires-Dist: qiskit_aer_gpu_cu11==0.17.0
+Requires-Dist: qiskit_ibm_runtime==0.40.1
+Requires-Dist: mthree==3.0.0

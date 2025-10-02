@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "QOPS"
+version = "0.1.0"
+description = "Quantum Program Testing Throught Commuting Pauli Strings"
+authors = [
+    { name = "Asmar", email = "asmar@simula.com" }
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "qiskit==2.1.1",
+    "qiskit_aer_gpu_cu11==0.17.0",
+    "qiskit_ibm_runtime==0.40.1",
+    "mthree==3.0.0",
+]
+
+[tool.setuptools.packages.find]
+# Automatically find packages inside the source tree
+where = ["."]
