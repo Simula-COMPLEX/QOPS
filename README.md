@@ -8,18 +8,13 @@ Quantum Program Testing Through Commuting Pauli Strings
 - Batch and single-test execution modes with optional early stopping once a deviation threshold is exceeded.
 
 ## Installation
-- **Prerequisites**: Python 3.12+, a working Qiskit installation, and (optionally) NVIDIA CUDA 11 support if you want to run the Aer GPU simulator bundled with the default executor.
+- **Prerequisites**: Python 3.12+, and (optionally) NVIDIA CUDA 11 support if you want to run the Aer GPU simulator bundled with the default executor.
 - **Install in a virtual environment (recommended)**:
   ```bash
   python -m venv .venv
   source .venv/bin/activate
   python -m pip install --upgrade pip
   python -m pip install .
-  ```
-  
-- **CPU-only environments**: If installing `qiskit_aer_gpu_cu11` fails, replace it with `qiskit-aer` in `pyproject.toml` or install the requirements manually:
-  ```bash
-  python -m pip install qiskit==2.1.1 qiskit-aer==0.13.3 qiskit-ibm-runtime==0.40.1 mthree==3.0.0
   ```
 
 ## Usage
