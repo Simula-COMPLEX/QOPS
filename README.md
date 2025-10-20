@@ -8,7 +8,7 @@ Quantum Program Testing Through Commuting Pauli Strings
 - Batch and single-test execution modes with optional early stopping once a deviation threshold is exceeded.
 
 ## Installation
-- **Prerequisites**: Python 3.12+, and (optionally) NVIDIA CUDA 11 support if you want to run the Aer GPU simulator bundled with the default executor.
+- **Prerequisites**: Python 3.11+, and (optionally) NVIDIA CUDA 11 support if you want to run the Aer GPU simulator bundled with the default executor.
 - **Install in a virtual environment (recommended)**:
   ```bash
   python -m venv .venv
