@@ -1,3 +1,5 @@
+LICENSE
+README.md
 pyproject.toml
 QOPS/QiskitExecutor.py
 QOPS/Test_CUT_CPS.py
