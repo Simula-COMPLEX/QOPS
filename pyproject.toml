@@ -15,7 +15,7 @@ dependencies = [
     "qiskit>=1.0",
     "qiskit_aer_gpu_cu11>=0.15.0",
     "qiskit_ibm_runtime>=0.40",
-    "mthree>=3.0.0",
+    "mthree",
     "qiskit-qasm3-import>=0.6"
 ]
 
