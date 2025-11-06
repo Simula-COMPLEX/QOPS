@@ -16,7 +16,8 @@ dependencies = [
     "qiskit_aer_gpu_cu11>=0.15.0",
     "qiskit_ibm_runtime>=0.35",
     "mthree",
-    "qiskit-qasm3-import>=0.6"
+    "qiskit-qasm3-import>=0.6",
+    "requests==2.32.3",
 ]
 
 [tool.setuptools.packages.find]
