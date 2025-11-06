@@ -14,7 +14,7 @@ requires-python = ">=3.10"
 dependencies = [
     "qiskit>=1.0",
     "qiskit_aer_gpu_cu11>=0.15.0",
-    "qiskit_ibm_runtime>=0.40",
+    "qiskit_ibm_runtime>=0.35",
     "mthree",
     "qiskit-qasm3-import>=0.6"
 ]
