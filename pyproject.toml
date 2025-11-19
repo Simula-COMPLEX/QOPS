@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "QOPS"
-version = "0.1.0"
+version = "0.0.1"
 description = "Quantum Program Testing Throught Commuting Pauli Strings"
 authors = [
     { name = "Asmar", email = "asmar@simula.com" }
