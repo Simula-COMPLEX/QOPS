@@ -137,6 +137,60 @@ print(tester.run_randomsearch()["Max Diff"])
 
 Swap the implementation body with calls to proprietary hardware, async job managers, or other simulators as needed—as long as `execute_test_cases` returns expectation values aligned with each Pauli dictionary it receives, QOPS will consume the results.
 
+### IBM Real Computer Example
+Utilizing the executor interface, we create a custom executor for IBM's real quantum computer execution:
+
+```python
+from qiskit import QuantumCircuit, generate_preset_pass_manager
+from qiskit.quantum_info import SparsePauliOp
+
+from QOPS.abstract_classes import Executor
+
+from qiskit_ibm_runtime import QiskitRuntimeService, Session, EstimatorOptions
+from qiskit_ibm_runtime.estimator import EstimatorV2 as Estimator
+
+
+class IBMExecutor(Executor):
+    def execute_test_cases(self, CUT: QuantumCircuit, test_cases: list[dict]) -> list[float]:
+        
+        service = QiskitRuntimeService(channel="ibm_cloud", token="YOUR IBM TOKKEN")
+        real_backend = service.least_busy(operational=True, simulator=False)
+        pass_manager = generate_preset_pass_manager(backend=real_backend, optimization_level=2)
+        
+        pubs = []
+        isa_qc = pass_manager.run(CUT)
+        for test in test_cases:
+            sp = [(k, v) for k, v in test.items()]
+            M1 = SparsePauliOp.from_list(sp)
+            isa_observables = M1.apply_layout(isa_qc.layout)
+            pubs.append((isa_qc, isa_observables))
+        
+        obs_list = []
+        for pub in pubs:
+            estimator = Estimator(mode=real_backend, options=EstimatorOptions(default_shots=10000))
+            # estimator.options.resilience.zne_mitigation = True  # uncomment if you need error mitigation enabled
+            # estimator.options.resilience.zne.amplifier = "pea"  # uncomment if you need error mitigation enabled
+            results = estimator.run([pub]).result()
+            obs = [x.data.evs for x in results]
+            obs_list.extend(obs)
+
+        return obs_list
+
+
+# Usage with the tester
+from QOPS.Tester import Circuit_Tester
+from qiskit import qasm3
+import json
+
+cut = qasm3.load("testcircuit.qasm")
+with open("testcps.json") as f:
+    cps = json.load(f)
+
+executor = IBMExecutor()
+tester = Circuit_Tester(cut, cps, executor, budget=1)
+print(tester.run_randomsearch()["Max Diff"])
+```
+
 ## VLQ Execution:
 QOPS can be easily integrated and executed on VLQ using their Qaas package and creating a custom executor. An example executor that uses Qaas is provided in the QOPS module and also shown below:
 
