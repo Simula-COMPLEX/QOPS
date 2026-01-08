@@ -16,6 +16,9 @@ Quantum Program Testing Through Commuting Pauli Strings
   python -m pip install --upgrade pip
   python -m pip install .
   ```
+## Demo!
+https://github.com/user-attachments/assets/bf67ad59-0df1-4600-a088-260e6d38c638
+
 
 ## Usage
 ### You can run QOPS in two modes: CLI and Module Library
