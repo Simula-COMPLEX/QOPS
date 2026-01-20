@@ -1,4 +1,4 @@
-# QOPS
+# QNRI-QOPS
 
 Quantum Program Testing Through Commuting Pauli Strings
 
