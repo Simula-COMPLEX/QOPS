@@ -9,10 +9,11 @@ from QOPS.abstract_classes import Executor
 
 class Qiskit_Executor(Executor):
     def __init__(self):
-        try:
+        available_devices = AerSimulator().available_devices()
+        if "GPU" in available_devices:
             self.aer_sim = AerSimulator(method="statevector", device='GPU', blocking_enable=True,
                                         batched_shots_gpu=True)
-        except:
+        else:
             self.aer_sim = AerSimulator(method="statevector", device='CPU', blocking_enable=True,
                                         batched_shots_gpu=True)
         self.pass_manager = generate_preset_pass_manager(backend=self.aer_sim, optimization_level=3)
