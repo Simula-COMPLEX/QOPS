@@ -1,5 +1,7 @@
 import json
 
+import pathlib
+
 from qiskit import QuantumCircuit, generate_preset_pass_manager, qasm3
 from qiskit.circuit.random import random_circuit
 from qiskit_aer import AerSimulator
@@ -7,10 +9,11 @@ from qiskit_ibm_runtime import Session, SamplerV2 as Sampler
 
 
 def get_compact_program_specification_Z(circuit:QuantumCircuit,shots=4000, simulator_type='statevector'):
-    try:
+    available_devices = AerSimulator().available_devices
+    if "GPU" in available_devices:
         aer_sim = AerSimulator(method="statevector", device='GPU', blocking_enable=True,
                                     batched_shots_gpu=True)
-    except:
+    else:
         aer_sim = AerSimulator(method="statevector", device='CPU', blocking_enable=True,
                                     batched_shots_gpu=True)
 
@@ -42,6 +45,7 @@ def mutation(circuit):
     m1 = circuit.copy()
     m1.ry(0.1,m1.num_qubits - 1)
     return m1
+
 
 
 if __name__ == '__main__':

@@ -1,4 +1,5 @@
 qiskit==2.1.1
-qiskit_aer_gpu_cu11==0.17.0
-qiskit_ibm_runtime==0.40.1
+qiskit_aer_gpu_cu11==0.17.0; sys_platform == "linux" and platform_machine == "x86_64"
+qiskit_aer==0.17.0; sys_platform != "linux" or platform_machine != "x86_64"
+qiskit_ibm_runtime==0.40.1 
 mthree==3.0.0
