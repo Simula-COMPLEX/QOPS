@@ -13,12 +13,14 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "qiskit>=1.0",
-    "qiskit_aer_gpu_cu11>=0.15.0",
+    "qiskit-aer-gpu-cu11>=0.15.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "qiskit-aer>=0.15.0; sys_platform != 'linux' or platform_machine != 'x86_64'",     
     "qiskit_ibm_runtime>=0.35",
     "mthree",
     "qiskit-qasm3-import>=0.6",
     "requests==2.32.3",
 ]
+
 
 [tool.setuptools.packages.find]
 # Automatically find packages inside the source tree
