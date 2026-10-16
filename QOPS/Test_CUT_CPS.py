@@ -9,7 +9,7 @@ from qiskit_ibm_runtime import Session, SamplerV2 as Sampler
 
 
 def get_compact_program_specification_Z(circuit:QuantumCircuit,shots=4000, simulator_type='statevector'):
-    available_devices = AerSimulator().available_devices
+    available_devices = AerSimulator().available_devices()
     if "GPU" in available_devices:
         aer_sim = AerSimulator(method="statevector", device='GPU', blocking_enable=True,
                                     batched_shots_gpu=True)
